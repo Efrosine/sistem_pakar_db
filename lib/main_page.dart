@@ -71,8 +71,25 @@ class _MainPageState extends State<MainPage> {
                   curve: Curves.linear,
                 );
               } else {
-                print('ending');
-                print("Hasil: ${Penyakit.result}");
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('Hasil'),
+                      content: Text(MatchingBits().result),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Gejala.reset();
+                            pc.jumpToPage(0);
+                            Navigator.pop(context);
+                          },
+                          child: const Text('OK'),
+                        ),
+                      ],
+                    );
+                  },
+                );
               }
             },
             icon: num < sumPage() - 1
