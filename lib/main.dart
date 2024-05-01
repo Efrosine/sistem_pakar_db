@@ -10,8 +10,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MainPage(),
+    return MaterialApp(
+      home: const MainPage(),
+      debugShowCheckedModeBanner: false,
+      builder: (context, child) => MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
+          child: child!),
     );
   }
 }

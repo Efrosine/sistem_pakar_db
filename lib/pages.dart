@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:sistem_pakar_db/model/gejala.dart';
 
 class Pages extends StatefulWidget {
   const Pages({super.key, required this.startIndex, required this.arrLength});
-  final int startIndex;
+
   final int arrLength;
+  final int startIndex;
+
   @override
   State<Pages> createState() => _PagesState();
 }
 
 class _PagesState extends State<Pages> {
   final List<Widget> option = const [Text('Tidak'), Text('Ya')];
+
   late List<List<bool>> isSelected;
+
   @override
   void initState() {
     isSelected = List.generate(
@@ -48,7 +51,7 @@ class _PagesState extends State<Pages> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(Gejala.listGejala[index + widget.startIndex].nama),
-                  Gap(8),
+                  const Gap(8),
                   Align(
                     alignment: Alignment.centerRight,
                     child: ToggleButtons(
@@ -60,7 +63,6 @@ class _PagesState extends State<Pages> {
                           for (int i = 0; i < isSelected[index].length; i++) {
                             isSelected[index][i] = i == newIndex;
                           }
-                          print(Gejala.binary);
                         });
                       },
                       children: option,

@@ -1,7 +1,4 @@
 class Gejala {
-  final String nama;
-  bool isSelected;
-
   Gejala({required this.nama, this.isSelected = false});
 
   static List<Gejala> listGejala = [
@@ -16,11 +13,9 @@ class Gejala {
     Gejala(nama: 'Pembengkakan kelenjar getah bening'), //9
   ];
 
-  static reset() {
-    for (int i = 0; i < listGejala.length; i++) {
-      listGejala[i].isSelected = false;
-    }
-  }
+  final String nama;
+
+  bool isSelected;
 
   static String get binary {
     String result = '';
@@ -28,5 +23,11 @@ class Gejala {
       result += listGejala[i].isSelected ? '1' : '0';
     }
     return result;
+  }
+
+  static reset() {
+    for (int i = 0; i < listGejala.length; i++) {
+      listGejala[i].isSelected = false;
+    }
   }
 }
